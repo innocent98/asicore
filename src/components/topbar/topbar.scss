@@ -1,0 +1,38 @@
+@import "../../global.scss";
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: $black;
+  padding: 5px 40px;
+  align-items: center;
+
+  .left {
+    color: white;
+    display: flex;
+    align-items: center;
+    p {
+      font-family: $genos;
+      font-size: 24px;
+      font-weight: 600;
+    }
+  }
+
+  .right {
+    color: white;
+    ul {
+      display: flex;
+      li {
+        list-style: none;
+        margin-left: 40px;
+        font-family: $poppins;
+        font-size: 15px;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .active{
+        color: $primary;
+      }
+    }
+  }
+}

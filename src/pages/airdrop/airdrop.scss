@@ -1,0 +1,274 @@
+@import "../../global.scss";
+
+.airdrop {
+  background-color: $black;
+  height: 100vh;
+  .airdropCon {
+    margin: 30px;
+    background-color: #191919;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 0;
+    padding-top: 10px;
+    position: relative;
+
+    h4 {
+      color: #ffc704;
+      font-size: 16px;
+      font-weight: 700;
+      font-family: $poppins;
+      padding: 20px;
+      text-align: center;
+      @include tab {
+        font-size: 14px;
+      }
+    }
+
+    .timerSect {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      h4 {
+        color: white;
+      }
+
+      .timerBox {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 40px;
+        @include tab {
+          gap: 2px;
+        }
+        p {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          color: white;
+          border: solid 1px lightgray;
+          padding: 14px;
+          border-radius: 8px;
+          width: 30px;
+          font-size: 20px;
+          font-family: $poppins;
+          font-weight: 700;
+          @include tab {
+            width: 20px;
+            font-size: 15px;
+          }
+          span {
+            font-size: 12px;
+            font-weight: 400;
+            color: white;
+            @include tab {
+              font-size: 10px;
+            }
+          }
+        }
+        span {
+          font-size: 60px;
+          color: $button;
+          font-weight: 700;
+          @include tab {
+            font-size: 30px;
+          }
+        }
+      }
+    }
+
+    .row {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      width: 400px;
+      @include tab {
+        width: 230px;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        label {
+          color: white;
+          font-family: $poppins;
+          font-weight: 400;
+          font-size: 14px;
+          display: flex;
+          justify-content: space-between;
+          margin-bottom: 5px;
+          @include tab {
+            font-size: 12px;
+          }
+          .follow {
+            color: #007aff;
+            cursor: pointer;
+          }
+        }
+
+        input {
+          padding: 15px;
+          border-radius: 8px;
+          border: none;
+          font-family: $poppins;
+          @include tab {
+            padding: 10px;
+          }
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      button {
+        background-color: $button;
+        width: 100px;
+        font-weight: 700;
+        font-size: 12px;
+        font-family: $poppins;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        @include tab {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .airdropDetails {
+      width: 400px;
+      color: white;
+      margin-top: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      @include tab {
+        width: 230px;
+      }
+
+      h5 {
+        font-family: $poppins;
+        font-size: 14px;
+        font-weight: 400;
+        span {
+          a {
+            font-weight: 700;
+            font-style: 12px;
+            font-family: $poppins;
+            color: #007aff;
+          }
+        }
+      }
+
+      p {
+        color: #6b6b6b;
+        font-family: $poppins;
+        font-style: 400px;
+        font-size: 14px;
+        margin-top: 15px;
+      }
+
+      .details {
+        margin-top: 40px;
+        display: flex;
+        gap: 55px;
+        @include tab {
+          gap: 10px;
+        }
+        .det {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          align-items: center;
+          h5 {
+            color: #007aff;
+            font-weight: 700;
+            font-size: 18px;
+            font-family: $poppins;
+            @include tab {
+              font-size: 14px;
+            }
+          }
+          h4 {
+            color: white;
+            margin-bottom: -15px;
+            margin-top: -15px;
+            @include tab {
+              font-size: 10px;
+            }
+          }
+          p {
+            margin-top: 0;
+            @include tab {
+              font-size: 10px;
+            }
+          }
+        }
+      }
+
+      button {
+        background-color: $button;
+        width: 100px;
+        font-weight: 700;
+        font-size: 12px;
+        font-family: $poppins;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        cursor: pointer;
+        margin-top: 20px;
+        align-self: center;
+        @include tab {
+          font-size: 10px;
+        }
+      }
+    }
+
+    .alertBox {
+      background-color: white;
+      padding: 10px;
+      color: #6b6b6b;
+      position: absolute;
+      box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
+      -webkit-box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 1px 4px 12px 0px rgba(0, 0, 0, 0.5);
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        font-family: $poppins;
+        font-weight: 500;
+        font-size: 14px;
+        @include tab {
+          font-size: 12px;
+        }
+        .icon {
+          cursor: pointer;
+        }
+      }
+
+      hr {
+        margin: 20px 0;
+      }
+
+      .content {
+        font-family: $poppins;
+        font-weight: 500;
+        font-size: 14px;
+        text-align: center;
+        @include tab {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

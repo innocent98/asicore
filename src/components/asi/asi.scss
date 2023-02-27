@@ -1,0 +1,379 @@
+@import "../../global.scss";
+
+.asi {
+  background-color: $black;
+  padding: 0 40px;
+  @include tab {
+    padding: 0;
+  }
+
+  .wrapper {
+    display: flex;
+    align-items: center;
+    color: white;
+    @include l {
+      padding-top: 20px;
+    }
+    @include tab {
+      padding: 0 40px;
+      padding-top: 30px;
+    }
+
+    .left {
+      flex: 1;
+      h2 {
+        font-family: $poppins;
+        font-weight: 700;
+        font-size: 36px;
+        margin-bottom: 30px;
+        color: $primary;
+        @include l {
+          font-size: 22px;
+        }
+        @include tab {
+          font-size: 20px;
+        }
+      }
+      p {
+        font-family: $poppins;
+        font-size: 16px;
+        font-weight: 400;
+        width: 80%;
+        margin-bottom: 40px;
+        text-align: justify;
+        @include l {
+          font-size: 14px;
+        }
+        @include tab {
+          width: 100%;
+          font-size: 12px;
+        }
+      }
+      button {
+        background-color: $button;
+        font-family: $poppins;
+        font-weight: 500;
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        @include l {
+          font-size: 14px;
+        }
+        @include tab {
+          font-size: 12px;
+        }
+      }
+    }
+
+    .right {
+      flex: 1;
+      @include tab {
+        display: none;
+      }
+      img {
+        width: 60%;
+        object-fit: contain;
+      }
+    }
+  }
+
+  .what {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    background-color: $button;
+    padding: 20px 50px;
+    margin: 50px 0;
+    @include l {
+      padding: 30px;
+    }
+    @include tab {
+      padding: 20px;
+    }
+
+    .left {
+      font-family: $poppins;
+      font-weight: 700;
+      font-size: 40px;
+      @include l {
+        font-size: 25px;
+      }
+      @include tab {
+        font-size: 20px;
+      }
+    }
+
+    .middle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      @include tab {
+        margin-top: 30px;
+      }
+      h2 {
+        font-family: $poppins;
+        font-weight: 700;
+        font-size: 30px;
+        color: $primary;
+        @include l {
+          font-size: 22px;
+        }
+        @include tab {
+          font-size: 20px;
+        }
+      }
+      img {
+        width: 100px;
+        @include l {
+          width: 100px;
+        }
+        @include tab {
+          width: 40px;
+        }
+      }
+    }
+
+    .right {
+      img {
+        @include l {
+          width: 100px;
+        }
+        @include tab {
+          width: 60px;
+        }
+      }
+    }
+  }
+
+  .mission {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 70px 0;
+    @include tab {
+      padding: 0 40px;
+    }
+    h2 {
+      color: $primary;
+      font-size: 30px;
+      font-family: $poppins;
+      font-weight: 700;
+      @include l {
+        font-size: 22px;
+      }
+      @include tab {
+        font-size: 20px;
+      }
+    }
+    p {
+      width: 50%;
+      font-family: $poppins;
+      font-size: 18px;
+      font-weight: 400;
+      text-align: justify;
+      @include l {
+        font-size: 14px;
+      }
+      @include tab {
+        width: 100%;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .tonenomics {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    @include l {
+      margin-top: 50px;
+    }
+    @include tab {
+      padding: 0 40px;
+      margin-top: 70px;
+    }
+    h2 {
+      color: $primary;
+      font-size: 30px;
+      font-family: $poppins;
+      font-weight: 700;
+      @include l {
+        font-size: 22px;
+      }
+      @include tab {
+        font-size: 20px;
+      }
+    }
+  }
+
+  .token {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $button;
+    padding: 20px 50px;
+    margin: 50px 0;
+    @include l {
+      padding: 30px;
+    }
+    @include tab {
+      padding: 20px;
+    }
+
+    h2 {
+      color: $primary;
+      font-size: 30px;
+      font-family: $poppins;
+      font-weight: 700;
+      @include l {
+        font-size: 22px;
+      }
+      @include tab {
+        font-size: 20px;
+      }
+    }
+
+    h4 {
+      font-family: $poppins;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 4;
+      @include tab{
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 3;
+      }
+    }
+    .address {
+      margin-top: 20px;
+      p{
+        font-family: $poppins;
+        font-weight: 400;
+        font-size: 16px;
+        margin-left: 40px;
+        @include tab{
+          font-size: 11px;
+          margin-left: 20px;
+        }
+      }
+    }
+
+    .addressInfo{
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      h4{
+        text-align-last: left;
+        span{
+          font-weight: 400;
+          margin-left: 100px;
+          text-align: left !important;
+        }
+      }
+    }
+  }
+  .participate{
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    // margin-bottom: 60px;
+    @include l {
+      padding: 0 30px;
+    }
+    @include tab {
+      padding: 0 20px;
+    }
+
+    h4 {
+      font-family: $poppins;
+      font-weight: 600;
+      font-size: 18px;
+      @include tab{
+        font-size: 14px;
+      }
+    }
+    a{
+      color: #007AFF;
+      font-family: $poppins;
+      font-size: 16px;
+      @include tab{
+        font-size: 14px;
+      }
+    }
+  }
+
+  hr{
+    margin: 60px 0;
+    @include tab{
+      margin: 60px 20px;
+    }
+  }
+
+  .inTouch {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    // margin: 70px 0;
+    @include tab {
+      padding: 0 40px;
+    }
+    h2 {
+      color: $primary;
+      font-size: 30px;
+      font-family: $poppins;
+      font-weight: 700;
+      @include l {
+        font-size: 22px;
+      }
+      @include tab {
+        font-size: 20px;
+        font-weight: 600;
+      }
+    }
+    .img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px 0;
+      img {
+        width: 20%;
+        cursor: pointer;
+        @include l {
+          width: 15%;
+        }
+      }
+    }
+    hr {
+      width: 100%;
+      margin: 50px 0;
+      color: lightgray;
+    }
+    p {
+      font-family: $poppins;
+      font-weight: 400;
+      font-size: 16px;
+      padding-bottom: 50px;
+      @include l {
+        font-size: 14px;
+      }
+      @include tab {
+        font-size: 12px;
+      }
+    }
+  }
+}
