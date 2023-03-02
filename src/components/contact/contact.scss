@@ -18,6 +18,9 @@
       font-size: 36px;
       margin-bottom: 30px;
       color: $primary;
+      @include tab{
+        font-size: 22px;
+      }
     }
 
     button {
@@ -25,16 +28,24 @@
       font-family: $poppins;
       font-weight: 500;
       font-size: 16px;
+      border: none;
       padding: 10px 20px;
       border-radius: 4px;
       color: white;
       cursor: pointer;
       width: 30%;
+      @include tab{
+        width: 100%;
+        font-size: 12px;
+      }
     }
     hr{
         width: 29%;
         color: lightgray;
         margin: 20px 0;
+        @include tab{
+          width: 100%;
+        }
     }
   }
 
@@ -50,6 +61,9 @@
       font-size: 36px;
       font-family: $poppins;
       font-weight: 700;
+      @include tab{
+        font-size: 22px;
+      }
     }
     .img {
       display: flex;
@@ -60,6 +74,9 @@
       img {
         width: 20%;
         cursor: pointer;
+        @include tab{
+          width: 15%;
+        }
       }
     }
     hr {
@@ -72,6 +89,9 @@
       font-weight: 400;
       font-size: 16px;
       padding-bottom: 50px;
+      @include tab{
+        font-size: 12px;
+      }
     }
   }
 }

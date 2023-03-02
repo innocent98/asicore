@@ -59,6 +59,14 @@ const Airdrop = () => {
               />
             </div>
             <div className="col">
+              <label htmlFor="">Retweet our Airdrop tweet</label>
+              <input
+                type="text"
+                placeholder="(Copy and drop your retweet link)"
+                required
+              />
+            </div>
+            <div className="col">
               <label htmlFor="">Input your CORE address</label>
               <input
                 type="text"

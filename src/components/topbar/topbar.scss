@@ -6,6 +6,11 @@
   background-color: $black;
   padding: 5px 40px;
   align-items: center;
+  overflow: hidden;
+  @include tab {
+    padding: 5px 20px;
+    align-items: flex-start;
+  }
 
   .left {
     color: white;
@@ -15,12 +20,18 @@
       font-family: $genos;
       font-size: 24px;
       font-weight: 600;
+      @include tab {
+        font-size: 16px;
+      }
     }
   }
 
   .right {
     color: white;
     ul {
+      @include tab {
+        display: none;
+      }
       display: flex;
       li {
         list-style: none;
@@ -30,9 +41,51 @@
         font-weight: 500;
         cursor: pointer;
       }
-      .active{
+      .active {
         color: $primary;
       }
+    }
+
+    .menu {
+      display: none;
+      @include tab {
+        display: flex;
+        margin-top: 15px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .sideMenu {
+    position: absolute;
+    background-color: $black;
+    height: 1500px;
+    width: 100vw;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: all 0.5s ease-in;
+    ul {
+      z-index: 9;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      margin-top: 40px;
+      margin-left: 40px;
+      .menu {
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+      li {
+        cursor: pointer;
+      }
+    }
+
+    &.active {
+      display: flex;
     }
   }
 }
