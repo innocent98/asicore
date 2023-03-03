@@ -83,7 +83,7 @@
     }
 
     .row {
-      display: none;
+      display: flex;
       flex-direction: column;
       align-items: center;
       gap: 20px;
@@ -137,6 +137,9 @@
         border-radius: 8px;
         color: white;
         cursor: pointer;
+        &:disabled {
+          cursor: not-allowed;
+        }
         @include tab {
           font-size: 10px;
         }
@@ -227,6 +230,9 @@
         cursor: pointer;
         margin-top: 20px;
         align-self: center;
+        &:disabled {
+          cursor: not-allowed;
+        }
         @include tab {
           font-size: 10px;
         }
@@ -234,6 +240,7 @@
     }
 
     .alertBox {
+      display: none; /*to be remved later*/
       background-color: white;
       padding: 10px;
       color: #6b6b6b;
