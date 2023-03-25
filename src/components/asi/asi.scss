@@ -351,10 +351,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
       padding: 20px 0;
       img {
-        width: 20%;
+        width: 50%;
         cursor: pointer;
         @include l {
           width: 15%;

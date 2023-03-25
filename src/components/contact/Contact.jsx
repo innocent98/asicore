@@ -8,9 +8,9 @@ const Contact = () => {
         <section>
           <div className="wrapper">
             <h2>Contact Us</h2>
-            <button>Telegram</button>
+            <button><a href="https://t.me/asi_core">Telegram</a></button>
             <hr />
-            <button>Twitter</button>
+            <button><a href="https://twitter.com/asi_core">Twitter</a></button>
           </div>
         </section>
 
@@ -18,8 +18,12 @@ const Contact = () => {
           <div className="inTouch">
             <h2>GET IN TOUCH</h2>
             <div className="img">
-              <img src="images/tw.png" alt="" />
-              <img src="images/tg.png" alt="" />
+              <a href="https://twitter.com/asi_core">
+                <img src="images/tw.png" alt="" />
+              </a>
+              <a href="https://t.me/asi_core">
+                <img src="images/tg.png" alt="" />
+              </a>
             </div>
             <hr />
             <p>(c) 2023 ASI CORE. All Rights Reserved</p>

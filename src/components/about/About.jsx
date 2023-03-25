@@ -49,8 +49,12 @@ const About = () => {
           <div className="inTouch">
             <h2>GET IN TOUCH</h2>
             <div className="img">
-              <img src="images/tw.png" alt="" />
-              <img src="images/tg.png" alt="" />
+              <a href="https://twitter.com/asi_core">
+                <img src="images/tw.png" alt="" />
+              </a>
+              <a href="https://t.me/asi_core">
+                <img src="images/tg.png" alt="" />
+              </a>
             </div>
             <hr />
             <p>(c) 2023 ASI CORE. All Rights Reserved</p>
