@@ -8,9 +8,16 @@ import {
   loginSuccess,
   logout,
 } from "../../redux/userRedux";
-import { userRequest } from "../../redux/requestMethod";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getRemainingTimeUntilMsTimestamp } from "../../components/utils/utils";
+
+const defaultRemainingTime = {
+  seconds: "00",
+  minutes: "00",
+  hours: "00",
+  days: "00",
+};
 
 const Airdrop = () => {
   const user = useSelector((state) => state.user.currentUser);
@@ -18,7 +25,6 @@ const Airdrop = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const path = location.search;
-  // console.log(path);
 
   const [inputs, setInputs] = useState({});
 
@@ -34,19 +40,17 @@ const Airdrop = () => {
     try {
       const res = await axios.post(
         path
-          ? "http://api.asicore.xyz/api/user/register" + path
-          : "http://api.asicore.xyz/api/user/register",
+          ? "https://api.asicore.xyz/api/user/register" + path
+          : "https://api.asicore.xyz/api/user/register",
         { ...inputs }
       );
       dispatch(loginSuccess(res.data));
       alert("You have successfully participated in the airdrop.");
-      // window.location.reload()
     } catch (error) {
       console.log(error);
       dispatch(loginFailure());
     }
   };
-  // console.log(inputs);
 
   const userLogout = async () => {
     dispatch(logout());
@@ -59,6 +63,23 @@ const Airdrop = () => {
       clearTimeout(timeout);
     };
   });
+
+  // get countdown
+  const [remainingTimeToUnlock, setRemainingTimeToUnlock] =
+    useState(defaultRemainingTime);
+  let monthsToAdd = new Date("13 April 2023");
+  const futureDate = monthsToAdd.setMonth(monthsToAdd.getMonth() + 1);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateRemainingTimeToUnlock(futureDate);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [futureDate]);
+
+  function updateRemainingTimeToUnlock(countdown) {
+    setRemainingTimeToUnlock(getRemainingTimeUntilMsTimestamp(countdown));
+  }
 
   return (
     <div className="airdrop">
@@ -74,19 +95,19 @@ const Airdrop = () => {
             <h4>Airdrop ending</h4>
             <div className="timerBox">
               <p>
-                00<span>days</span>
+                {remainingTimeToUnlock.days}<span>days</span>
               </p>
               <span>:</span>
               <p>
-                00<span>hours</span>
+                {remainingTimeToUnlock.hours}<span>hours</span>
               </p>
               <span>:</span>
               <p>
-                00<span>minutes</span>
+                {remainingTimeToUnlock.minutes}<span>minutes</span>
               </p>
               <span>:</span>
               <p>
-                00<span>seconds</span>
+                {remainingTimeToUnlock.seconds}<span>seconds</span>
               </p>
             </div>
           </div>
