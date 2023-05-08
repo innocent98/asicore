@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkasicore=self.webpackChunkasicore||[]).push([[193],{9193:function(e,i,n){n.r(i),n.d(i,{default:function(){return s}});var r=n(184),s=function(){return(0,r.jsx)("div",{className:"intro",children:(0,r.jsx)("div",{className:"bkImg",children:(0,r.jsxs)("div",{className:"wrapper",children:[(0,r.jsx)("h2",{children:"Asi Core"}),(0,r.jsx)("p",{children:"First Super Artificial Intelligence token built on COREDAO Blockchain"})]})})})}}}]);
+//# sourceMappingURL=193.5966e2a8.chunk.js.map

@@ -67,7 +67,7 @@ const Airdrop = () => {
   // get countdown
   const [remainingTimeToUnlock, setRemainingTimeToUnlock] =
     useState(defaultRemainingTime);
-  let monthsToAdd = new Date("13 April 2023");
+  let monthsToAdd = new Date("3 May 2023");
   const futureDate = monthsToAdd.setMonth(monthsToAdd.getMonth() + 1);
 
   useEffect(() => {
@@ -119,7 +119,7 @@ const Airdrop = () => {
               <div className="col">
                 <label htmlFor="">
                   <span>Follow us on Telegram</span>{" "}
-                  <span className="follow">follow</span>
+                  <a href="https://t.me/asi_core" className="follow">follow</a>
                 </label>
                 <input
                   type="text"
@@ -132,7 +132,7 @@ const Airdrop = () => {
               <div className="col">
                 <label htmlFor="">
                   <span>Follow us on Twitter</span>{" "}
-                  <span className="follow">follow</span>
+                  <a href="https://twitter.com/asi_core" className="follow">follow</a>
                 </label>
                 <input
                   type="text"
@@ -179,9 +179,9 @@ const Airdrop = () => {
                 </span>
               </h5>
               <p>
-                Copy and share your refer link,you will be rewarded 3 ASICORE
-                and the invitee will be rewarded 0.09ASI at the same time, each
-                person can invite up to 3 ASI token
+                Copy and share your refer link, you will be rewarded 1000ASI
+                and the invitee will be rewarded 1000ASI at the same time, each
+                person can invite up to 3
               </p>
 
               <div className="details">

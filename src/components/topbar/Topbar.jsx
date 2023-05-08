@@ -32,7 +32,7 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
   return (
     <div className="topbar">
       <div className="left">
-        <img src="images/logo.png" alt="" />
+        <img src="images/asi.jpg" alt="" style={{width: '80px'}} />
         <p>ASI CORE</p>
       </div>
       <div className="right">

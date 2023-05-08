@@ -1,15 +1,24 @@
 import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
-import Airdrop from "./pages/airdrop/Airdrop";
-import Home from "./pages/home/Home";
+import { Suspense, lazy } from "react";
+const Airdrop = lazy(() => import("./pages/airdrop/Airdrop"));
+const Home = lazy(() => import("./pages/home/Home"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <Suspense fallback={<div></div>}>
+        <Home />
+      </Suspense>
+    ),
   },
   {
     path: "/airdrop",
-    element: <Airdrop />,
+    element: (
+      <Suspense fallback={<div></div>}>
+        <Airdrop />
+      </Suspense>
+    ),
   },
 ]);
 
@@ -20,6 +29,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
