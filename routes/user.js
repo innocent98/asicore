@@ -17,7 +17,7 @@ router.post("/register", async (req, res) => {
         balance: 1000,
       });
       await newUser.save();
-      await query.updateOne({ $inc: { referred: +300 } });
+      await query.updateOne({ $inc: { referred: referred + 1000 } });
       res.status(200).json(newUser);
     } else if (!user) {
       const newUser = new User({
