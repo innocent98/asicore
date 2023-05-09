@@ -1,7 +1,11 @@
+import { useLocation } from "react-router-dom";
 import "./topbar.scss";
 import { useState } from "react";
 
 const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
+  const location = useLocation();
+  const path = location.pathname;
+
   const [menu, setMenu] = useState(false);
 
   const handleMenu = () => {
@@ -9,30 +13,42 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
   };
 
   const handleHome = () => {
-    setHome(true);
-    setContact(false);
-    setAbout(false);
-    setMenu(false);
+    if (path === "/airdrop") {
+      window.location.replace("/");
+    } else {
+      setContact(false);
+      setAbout(false);
+      setMenu(false);
+      setHome(true);
+    }
   };
 
   const handleContact = () => {
-    setContact(true);
-    setHome(false);
-    setAbout(false);
-    setMenu(false);
+    if (path === "/airdrop") {
+      window.location.replace("/");
+    } else {
+      setContact(true);
+      setHome(false);
+      setAbout(false);
+      setMenu(false);
+    }
   };
 
   const handleAbout = () => {
-    setAbout(true);
-    setContact(false);
-    setHome(false);
-    setMenu(false);
+    if (path === "/airdrop") {
+      window.location.replace("/");
+    } else {
+      setAbout(true);
+      setContact(false);
+      setHome(false);
+      setMenu(false);
+    }
   };
 
   return (
     <div className="topbar">
       <div className="left">
-        <img src="images/asi.jpg" alt="" style={{width: '80px'}} />
+        <img src="images/asi.jpg" alt="" style={{ width: "80px" }} />
         <p>ASI CORE</p>
       </div>
       <div className="right">

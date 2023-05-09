@@ -117,10 +117,10 @@ const Asi = () => {
         <div className="token">
           <Zoom triggerOnce>
             <h2>TOKEN INFORMATION</h2>
-            <div className="address">
+            {/* <div className="address">
               <h4>CONTACT ADDRESS</h4>
               <p>0x7ui87uyt689u99hfu978997gew2dg7fxnm,,,,nbnb</p>
-            </div>
+            </div> */}
             <div className="addressInfo">
               <h4>
                 CHAIN: <span>CORE CHAIN</span>

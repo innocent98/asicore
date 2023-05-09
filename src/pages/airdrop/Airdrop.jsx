@@ -118,8 +118,8 @@ const Airdrop = () => {
             <form className="row" onSubmit={handleAirdrop}>
               <div className="col">
                 <label htmlFor="">
-                  <span>Follow us on Telegram</span>{" "}
-                  <a href="https://t.me/asi_core" className="follow">follow</a>
+                  <span>Join us on Telegram</span>{" "}
+                  <a href="https://t.me/asi_core" className="follow">join</a>
                 </label>
                 <input
                   type="text"
@@ -143,7 +143,7 @@ const Airdrop = () => {
                 />
               </div>
               <div className="col">
-                <label htmlFor="">Retweet our Airdrop tweet</label>
+                <label htmlFor="">Like andRetweet our Airdrop tweet</label>
                 <input
                   type="text"
                   placeholder="(Copy and drop your retweet link)"
@@ -153,7 +153,7 @@ const Airdrop = () => {
                 />
               </div>
               <div className="col">
-                <label htmlFor="">Input your CORE address</label>
+                <label htmlFor="">Input your CORE address on DEX</label>
                 <input
                   type="text"
                   placeholder="Input your CORE address"
@@ -180,8 +180,7 @@ const Airdrop = () => {
               </h5>
               <p>
                 Copy and share your refer link, you will be rewarded 1000ASI
-                and the invitee will be rewarded 1000ASI at the same time, each
-                person can invite up to 3
+                and the invitee will be rewarded 1000ASI at the same time.
               </p>
 
               <div className="details">
