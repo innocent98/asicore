@@ -93,8 +93,9 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           </li>
           <li>
             <a
-              href="https://drive.google.com/file/d/1OlC5bpiiBiJeFclhKXS7ln3CuqFAZvHI/view?usp=drivesdk"
-              download="ASICORE WHITEPAPER"
+              href="https://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              target="_blank"
+              rel="noreferrer"
               style={{ color: "white", textDecoration: "none" }}
             >
               Whitepaper
