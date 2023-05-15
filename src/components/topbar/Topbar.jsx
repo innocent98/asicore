@@ -58,7 +58,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           </li>
           <li>
             <a
-              href="https://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              href="http://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              download="ASICORE_WHITEPAPER.pdf"
               target="_blank"
               rel="noreferrer"
               style={{ color: "white", textDecoration: "none" }}
@@ -93,7 +94,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           </li>
           <li>
             <a
-              href="https://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              href="http://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              download="ASICORE_WHITEPAPER.pdf"
               target="_blank"
               rel="noreferrer"
               style={{ color: "white", textDecoration: "none" }}
