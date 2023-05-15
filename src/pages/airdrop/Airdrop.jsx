@@ -8,7 +8,7 @@ import {
   loginSuccess,
   logout,
 } from "../../redux/userRedux";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import axios from "axios";
 import { getRemainingTimeUntilMsTimestamp } from "../../components/utils/utils";
 
@@ -27,6 +27,8 @@ const Airdrop = () => {
   const path = location.search;
 
   const [inputs, setInputs] = useState({});
+  const [userInfo, setUserInfo] = useState({});
+  const [withdrawPrompt, setWithdrawPrompt] = useState(false);
 
   const handleChange = (e) => {
     setInputs((prev) => {
@@ -52,17 +54,35 @@ const Airdrop = () => {
     }
   };
 
-  const userLogout = async () => {
-    dispatch(logout());
-  };
+  // get user info
+  const findUser = useCallback(async () => {
+    if (user) {
+      const res = await axios.post("https://api.asicore.xyz/api/user/user", {
+        address: user?.address,
+      });
+      setUserInfo(res.data);
+    }
+  }, [setUserInfo, user]);
+
   useEffect(() => {
-    const timeout = setTimeout(() => {
-      userLogout();
-    }, 3600000);
-    return () => {
-      clearTimeout(timeout);
-    };
-  });
+    let unsubscribe = findUser();
+    return () => unsubscribe;
+  }, [findUser, setUserInfo]);
+
+  const userLogout = useCallback(async () => {
+    dispatch(logout());
+  }, [dispatch]);
+
+  useEffect(() => {
+    if (user) {
+      const timeout = setInterval(() => {
+        userLogout();
+      }, 3600000);
+      return () => {
+        clearInterval(timeout);
+      };
+    }
+  }, [user, userLogout]);
 
   // get countdown
   const [remainingTimeToUnlock, setRemainingTimeToUnlock] =
@@ -81,6 +101,11 @@ const Airdrop = () => {
     setRemainingTimeToUnlock(getRemainingTimeUntilMsTimestamp(countdown));
   }
 
+  // handle withdraw prompt
+  const handleWithdrawPromt = () => {
+    setWithdrawPrompt(!withdrawPrompt);
+  };
+
   return (
     <div className="airdrop">
       <Topbar />
@@ -95,19 +120,23 @@ const Airdrop = () => {
             <h4>Airdrop ending</h4>
             <div className="timerBox">
               <p>
-                {remainingTimeToUnlock.days}<span>days</span>
+                {remainingTimeToUnlock.days}
+                <span>days</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.hours}<span>hours</span>
+                {remainingTimeToUnlock.hours}
+                <span>hours</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.minutes}<span>minutes</span>
+                {remainingTimeToUnlock.minutes}
+                <span>minutes</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.seconds}<span>seconds</span>
+                {remainingTimeToUnlock.seconds}
+                <span>seconds</span>
               </p>
             </div>
           </div>
@@ -119,7 +148,14 @@ const Airdrop = () => {
               <div className="col">
                 <label htmlFor="">
                   <span>Join us on Telegram</span>{" "}
-                  <a href="https://t.me/asi_core" className="follow">join</a>
+                  <a
+                    href="https://t.me/asi_core"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="follow"
+                  >
+                    join
+                  </a>
                 </label>
                 <input
                   type="text"
@@ -132,7 +168,14 @@ const Airdrop = () => {
               <div className="col">
                 <label htmlFor="">
                   <span>Follow us on Twitter</span>{" "}
-                  <a href="https://twitter.com/asi_core" className="follow">follow</a>
+                  <a
+                    href="https://twitter.com/asi_core"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="follow"
+                  >
+                    follow
+                  </a>
                 </label>
                 <input
                   type="text"
@@ -143,7 +186,17 @@ const Airdrop = () => {
                 />
               </div>
               <div className="col">
-                <label htmlFor="">Like andRetweet our Airdrop tweet</label>
+                <label htmlFor="">
+                  <span>Like and Retweet our Airdrop tweet</span>
+                  <a
+                    href="https://twitter.com/asi_core/status/1657113213434056731?t=HFJY8svRn12ufVq4MaLRKA&s=19"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="follow"
+                  >
+                    retweet
+                  </a>
+                </label>
                 <input
                   type="text"
                   placeholder="(Copy and drop your retweet link)"
@@ -175,45 +228,56 @@ const Airdrop = () => {
               <h5>
                 Refer Link:{" "}
                 <span>
-                  <a href="/">{`http://asicore.xyz/airdrop?_id=${user?._id}`}</a>
+                  <a href="/">{`https://asicore.xyz/airdrop?_id=${user?._id}`}</a>
                 </span>
               </h5>
               <p>
-                Copy and share your refer link, you will be rewarded 1000ASI
-                and the invitee will be rewarded 1000ASI at the same time.
+                Copy and share your refer link, you will be rewarded 1000ASI and
+                the invitee will be rewarded 1000ASI at the same time.
               </p>
 
               <div className="details">
                 <div className="det">
-                  <h5>{user?.balance}</h5>
+                  <h5>{userInfo?.balance}</h5>
                   <h4>ASICORE</h4>
                   <p>Balance</p>
                 </div>
                 <div className="det">
-                  <h5>{user?.referred}</h5>
+                  <h5>
+                    {userInfo?.referred / 1000 > 0
+                      ? userInfo?.referred / 1000
+                      : 0}
+                  </h5>
                   <p>Referred</p>
                 </div>
                 <div className="det">
-                  <h5>{user?.reward}</h5>
+                  <h5>{userInfo?.referred}</h5>
                   <h4>ASICORE</h4>
                   <p>Rewards</p>
                 </div>
               </div>
-              <button disabled>WITHDRAW</button>
+              <button onClick={handleWithdrawPromt}>WITHDRAW</button>
             </div>
           </section>
         )}
 
-        <div className="alertBox">
-          <div className="title">
-            <p>Prompt</p>
-            <span className="material-icons icon">close</span>
+        {withdrawPrompt && (
+          <div className="alertBox">
+            <div className="title">
+              <p>Prompt</p>
+              <span
+                className="material-icons icon"
+                onClick={handleWithdrawPromt}
+              >
+                close
+              </span>
+            </div>
+            <hr />
+            <div className="content">
+              Kindly wait patiently for Airdrop to be over
+            </div>
           </div>
-          <hr />
-          <div className="content">
-            Minimal withdraw 0.10 ASICORE. Keep referring
-          </div>
-        </div>
+        )}
       </div>
     </div>
   );

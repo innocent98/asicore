@@ -89,7 +89,7 @@
       gap: 20px;
       width: 400px;
       @include tab {
-        width: 230px;
+        width: 250px;
       }
       .col {
         display: flex;
@@ -110,6 +110,7 @@
             color: #007aff;
             cursor: pointer;
             text-decoration: none;
+            width: 'auto'
           }
         }
 
@@ -241,7 +242,7 @@
     }
 
     .alertBox {
-      display: none; /*to be remved later*/
+      // display: flex; /*to be remved later*/
       background-color: white;
       padding: 10px;
       color: #6b6b6b;

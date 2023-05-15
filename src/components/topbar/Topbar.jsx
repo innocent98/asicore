@@ -56,12 +56,26 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           <li className={home ? "active" : ""} onClick={handleHome}>
             Home
           </li>
-          <li>Whitepaper</li>
+          <li>
+            <a
+              href="https://asicore.xyz/file/ASICORE_WHITEPAPER.pdf"
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Whitepaper
+            </a>
+          </li>
           <li className={about ? "active" : ""} onClick={handleAbout}>
             About
           </li>
           <li className={contact ? "active" : ""} onClick={handleContact}>
             Contact
+          </li>
+          <li className={contact ? "active" : ""}>
+            <a href="/login" style={{ color: "white" }}>
+              Login
+            </a>
           </li>
         </ul>
         <span className="material-icons menu" onClick={handleMenu}>
@@ -77,12 +91,25 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           <li className={home ? "active" : ""} onClick={handleHome}>
             Home
           </li>
-          <li>Whitepaper</li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1OlC5bpiiBiJeFclhKXS7ln3CuqFAZvHI/view?usp=drivesdk"
+              download="ASICORE WHITEPAPER"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Whitepaper
+            </a>
+          </li>
           <li className={about ? "active" : ""} onClick={handleAbout}>
             About
           </li>
           <li className={contact ? "active" : ""} onClick={handleContact}>
             Contact
+          </li>
+          <li className={contact ? "active" : ""}>
+            <a href="/login" style={{ color: "white" }}>
+              Login
+            </a>
           </li>
         </ul>
       </div>
