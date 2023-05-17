@@ -57,9 +57,9 @@ const Airdrop = () => {
   // get user info
   const findUser = useCallback(async () => {
     if (user) {
-      const res = await axios.post("https://api.asicore.xyz/api/user/user", {
-        address: user?.address,
-      });
+      const res = await axios.get(
+        "https://api.asicore.xyz/api/user/user/" + user?.address
+      );
       setUserInfo(res.data);
     }
   }, [setUserInfo, user]);
@@ -75,14 +75,14 @@ const Airdrop = () => {
 
   useEffect(() => {
     if (user) {
-      const timeout = setInterval(() => {
+      const timeout = setTimeout(() => {
         userLogout();
       }, 3600000);
       return () => {
-        clearInterval(timeout);
+        clearTimeout(timeout);
       };
     }
-  }, [user, userLogout]);
+  }, [user]);
 
   // get countdown
   const [remainingTimeToUnlock, setRemainingTimeToUnlock] =

@@ -15,6 +15,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
   const handleHome = () => {
     if (path === "/airdrop") {
       window.location.replace("/");
+    } else if (path === "/login") {
+      window.location.replace("/");
     } else {
       setContact(false);
       setAbout(false);
@@ -26,6 +28,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
   const handleContact = () => {
     if (path === "/airdrop") {
       window.location.replace("/");
+    } else if (path === "/login") {
+      window.location.replace("/");
     } else {
       setContact(true);
       setHome(false);
@@ -36,6 +40,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
 
   const handleAbout = () => {
     if (path === "/airdrop") {
+      window.location.replace("/");
+    } else if (path === "/login") {
       window.location.replace("/");
     } else {
       setAbout(true);
@@ -94,8 +100,8 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
           </li>
           <li>
             <a
-             href="https://drive.google.com/uc?id=1OlC5bpiiBiJeFclhKXS7ln3CuqFAZvHI&export=download"
-             download="ASICORE_WHITEPAPER.pdf"
+              href="https://drive.google.com/uc?id=1OlC5bpiiBiJeFclhKXS7ln3CuqFAZvHI&export=download"
+              download="ASICORE_WHITEPAPER.pdf"
               target="_blank"
               rel="noreferrer"
               style={{ color: "white", textDecoration: "none" }}
