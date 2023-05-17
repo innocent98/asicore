@@ -5,6 +5,7 @@ const UserSchema = new mongoose.Schema(
     address: { type: String },
     balance: { type: Number, default: 0 },
     referred: { type: Number, default: 0 },
+    referredList: { type: Array },
     reward: { type: Number, default: 0 },
     telegram: { type: String },
     twitter: { type: String },
