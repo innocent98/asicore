@@ -7,35 +7,36 @@ router.post("/register", async (req, res) => {
   try {
     const user = await User.findOne({ address: req.body.address });
     const query = await User.findOne({ _id: req.query._id });
-    if (!user) {
-      if (req.query._id && query) {
-        const newUser = new User({
-          address: req.body.address,
-          telegram: req.body.telegram,
-          twitter: req.body.twitter,
-          link: req.body.link,
-          balance: 1000,
-        });
-        await newUser.save();
-        if (!query.referredList.includes(newUser.id)) {
-          await query.updateOne({ $set: { referred: query.referred + 1000 } });
-          await query.updateOne({ $push: { referredList: newUser.id } });
-        }
-        res.status(200).json(newUser);
-      } else {
-        const newUser = new User({
-          address: req.body.address,
-          telegram: req.body.telegram,
-          twitter: req.body.twitter,
-          link: req.body.link,
-          balance: 1000,
-        });
-        await newUser.save();
-        res.status(200).json(newUser);
-      }
-    } else {
-      res.status(200).json(user);
-    }
+    res.status(200).json("PHASE I Airdrop has ended, kindly wait for PHASE II.")
+    // if (!user) {
+    //   if (req.query._id && query) {
+    //     const newUser = new User({
+    //       address: req.body.address,
+    //       telegram: req.body.telegram,
+    //       twitter: req.body.twitter,
+    //       link: req.body.link,
+    //       balance: 1000,
+    //     });
+    //     await newUser.save();
+    //     if (!query.referredList.includes(newUser.id)) {
+    //       await query.updateOne({ $set: { referred: query.referred + 1000 } });
+    //       await query.updateOne({ $push: { referredList: newUser.id } });
+    //     }
+    //     res.status(200).json(newUser);
+    //   } else {
+    //     const newUser = new User({
+    //       address: req.body.address,
+    //       telegram: req.body.telegram,
+    //       twitter: req.body.twitter,
+    //       link: req.body.link,
+    //       balance: 1000,
+    //     });
+    //     await newUser.save();
+    //     res.status(200).json(newUser);
+    //   }
+    // } else {
+    //   res.status(200).json(user);
+    // }
   } catch (err) {
     console.log(err);
   }
@@ -61,7 +62,7 @@ router.get("/", async (req, res) => {
       0
     );
 
-    res.status(200).json(user.length);
+    res.status(200).json(totalReferred);
   } catch (err) {}
 });
 
