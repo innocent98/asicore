@@ -38,7 +38,7 @@ const Airdrop = () => {
 
   const handleAirdrop = async (e) => {
     e.preventDefault();
-    dispatch(loginStart());
+    // dispatch(loginStart());
     try {
       const res = await axios.post(
         path
@@ -46,11 +46,12 @@ const Airdrop = () => {
           : "https://api.asicore.xyz/api/user/register",
         { ...inputs }
       );
-      dispatch(loginSuccess(res.data));
-      alert("You have successfully participated in the airdrop.");
+      // dispatch(loginSuccess(res.data));
+      alert(res.data);
+      // alert("You have successfully participated in the airdrop.");
     } catch (error) {
       console.log(error);
-      dispatch(loginFailure());
+      // dispatch(loginFailure());
     }
   };
 
