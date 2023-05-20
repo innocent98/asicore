@@ -29,6 +29,7 @@ const Airdrop = () => {
   const [inputs, setInputs] = useState({});
   const [userInfo, setUserInfo] = useState({});
   const [withdrawPrompt, setWithdrawPrompt] = useState(false);
+  const [processing, setProcessing] = useState(false);
 
   const handleChange = (e) => {
     setInputs((prev) => {
@@ -85,26 +86,47 @@ const Airdrop = () => {
     }
   }, [user]);
 
-  // get countdown
-  const [remainingTimeToUnlock, setRemainingTimeToUnlock] =
-    useState(defaultRemainingTime);
-  let monthsToAdd = new Date("3 May 2023");
-  const futureDate = monthsToAdd.setMonth(monthsToAdd.getMonth() + 1);
+  // // get countdown
+  // const [remainingTimeToUnlock, setRemainingTimeToUnlock] =
+  //   useState(defaultRemainingTime);
+  // let monthsToAdd = new Date("3 May 2023");
+  // const futureDate = monthsToAdd.setMonth(monthsToAdd.getMonth() + 1);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      updateRemainingTimeToUnlock(futureDate);
-    }, 1000);
-    return () => clearInterval(intervalId);
-  }, [futureDate]);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     updateRemainingTimeToUnlock(futureDate);
+  //   }, 1000);
+  //   return () => clearInterval(intervalId);
+  // }, [futureDate]);
 
-  function updateRemainingTimeToUnlock(countdown) {
-    setRemainingTimeToUnlock(getRemainingTimeUntilMsTimestamp(countdown));
-  }
+  // function updateRemainingTimeToUnlock(countdown) {
+  //   setRemainingTimeToUnlock(getRemainingTimeUntilMsTimestamp(countdown));
+  // }
 
   // handle withdraw prompt
+
   const handleWithdrawPromt = () => {
     setWithdrawPrompt(!withdrawPrompt);
+  };
+
+  const handleWithdraw = async (e) => {
+    e.preventDefault();
+    setProcessing(true);
+    try {
+      const res = await axios.post(
+        "https://api.asicore.xyz/api/user/core-withdraw",
+        {
+          ...inputs,
+          address: user?.address,
+        }
+      );
+      setProcessing(false);
+      alert(res.data);
+      window.location.reload();
+    } catch (error) {
+      setProcessing(false);
+      alert(error.response.data);
+    }
   };
 
   return (
@@ -121,22 +143,26 @@ const Airdrop = () => {
             <h4>Airdrop ending</h4>
             <div className="timerBox">
               <p>
-                {remainingTimeToUnlock.days}
+                {/* {remainingTimeToUnlock.days} */}
+                00
                 <span>days</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.hours}
+                {/* {remainingTimeToUnlock.hours} */}
+                00
                 <span>hours</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.minutes}
+                {/* {remainingTimeToUnlock.minutes} */}
+                00
                 <span>minutes</span>
               </p>
               <span>:</span>
               <p>
-                {remainingTimeToUnlock.seconds}
+                {/* {remainingTimeToUnlock.seconds} */}
+                00
                 <span>seconds</span>
               </p>
             </div>
@@ -226,7 +252,7 @@ const Airdrop = () => {
         {user && (
           <section>
             <div className="airdropDetails">
-              <h5>
+              {/* <h5>
                 Refer Link:{" "}
                 <span>
                   <a href="/">{`https://asicore.xyz/airdrop?_id=${user?._id}`}</a>
@@ -235,7 +261,7 @@ const Airdrop = () => {
               <p>
                 Copy and share your refer link, you will be rewarded 1000ASI and
                 the invitee will be rewarded 1000ASI at the same time.
-              </p>
+              </p> */}
 
               <div className="details">
                 <div className="det">
@@ -273,10 +299,26 @@ const Airdrop = () => {
                 close
               </span>
             </div>
-            <hr />
+            <form className="row" onSubmit={handleWithdraw}>
+              <div className="col">
+                <input
+                  type="text"
+                  name="address"
+                  placeholder="Input your CORE address"
+                  onChange={handleChange}
+                  style={{ border: "1px solid lightgray" }}
+                />
+              </div>
+              <div className="col" style={{ width: "100%" }}>
+                <button style={{ alignSelf: "center" }}>
+                  {processing ? "Please wait..." : "WITHDRAW"}
+                </button>
+              </div>
+            </form>
+            {/* <hr />
             <div className="content">
               Kindly wait patiently for Airdrop to be over
-            </div>
+            </div> */}
           </div>
         )}
       </div>

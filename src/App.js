@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { useSelector } from "react-redux";
+import Admin from "./pages/admin/Admin";
 const Airdrop = lazy(() => import("./pages/airdrop/Airdrop"));
 const Login = lazy(() => import("./pages/airdrop/Login"));
 const Home = lazy(() => import("./pages/home/Home"));
@@ -26,6 +27,14 @@ function App() {
       element: (
         <Suspense fallback={<div></div>}>
           <Airdrop />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/asicore-check",
+      element: (
+        <Suspense fallback={<div></div>}>
+          <Admin />
         </Suspense>
       ),
     },

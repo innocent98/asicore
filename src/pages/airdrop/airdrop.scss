@@ -257,6 +257,7 @@
         font-family: $poppins;
         font-weight: 500;
         font-size: 14px;
+        margin-bottom: 20px;
         @include tab {
           font-size: 12px;
         }
