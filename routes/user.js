@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const Withdraw = require("../models/Withdraw");
 
 const router = require("express").Router();
 
@@ -7,7 +8,9 @@ router.post("/register", async (req, res) => {
   try {
     const user = await User.findOne({ address: req.body.address });
     const query = await User.findOne({ _id: req.query._id });
-    res.status(200).json("PHASE I Airdrop has ended, kindly wait for PHASE II.")
+    res
+      .status(200)
+      .json("PHASE I Airdrop has ended, kindly wait for PHASE II.");
     // if (!user) {
     //   if (req.query._id && query) {
     //     const newUser = new User({
@@ -82,6 +85,52 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// withdraw
+router.post("/core-withdraw", async (req, res) => {
+  try {
+    const user = await User.findOne({ address: req.body.address });
+    if (user) {
+      if (user.balance > 0) {
+        const newWithdraw = new Withdraw({
+          address: req.body.address,
+          telegram: user.telegram,
+          twitter: user.twitter,
+          link: user.link,
+          balance: user.balance,
+          referred: user.referred,
+        });
+        await newWithdraw.save();
+        await user.updateOne({ $set: { referred: 0 } });
+        await user.updateOne({ $set: { balance: 0 } });
+        res
+          .status(200)
+          .json("Withdraw successful! Kindly wait for disbursement");
+      } else {
+        res.status(400).json("Balance not sufficient!");
+      }
+    } else {
+      res.status(404).json("Account not found!");
+    }
+  } catch (err) {
+    res.status(500).json("Internal server error");
+  }
+});
+
+// mark withdraw done
+router.put("/mark-paid/:id", async (req, res) => {
+  try {
+    const withdrawId = await Withdraw.findById(req.params.id);
+    if (withdrawId) {
+      await withdrawId.updateOne({ $set: { isPaid: true } });
+      res.status(200).json("Successfully disbursed!");
+    } else {
+      res.status(404).json("Account not found!");
+    }
+  } catch (err) {
+    res.status(500).json("Internal server error");
+  }
+});
+
 // get user
 router.get("/user/:address", async (req, res) => {
   try {
@@ -91,6 +140,16 @@ router.get("/user/:address", async (req, res) => {
     } else {
       res.status(404).json("Not found!");
     }
+  } catch (err) {
+    res.status(500).json("Internal server error");
+  }
+});
+
+// get withdraw
+router.get("/withdraw/all", async (req, res) => {
+  try {
+    const withdraw = await Withdraw.find();
+    res.status(200).json(withdraw);
   } catch (err) {
     res.status(500).json("Internal server error");
   }
