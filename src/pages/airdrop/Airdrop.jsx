@@ -265,7 +265,8 @@ const Airdrop = () => {
 
               <div className="details">
                 <div className="det">
-                  <h5>{userInfo?.balance}</h5>
+                  <h5>0</h5>
+                  {/* <h5>{userInfo?.balance}</h5> */}
                   <h4>ASICORE</h4>
                   <p>Balance</p>
                 </div>
@@ -310,7 +311,7 @@ const Airdrop = () => {
                 />
               </div>
               <div className="col" style={{ width: "100%" }}>
-                <button style={{ alignSelf: "center" }}>
+                <button style={{ alignSelf: "center" }} disabled>
                   {processing ? "Please wait..." : "WITHDRAW"}
                 </button>
               </div>
