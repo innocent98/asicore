@@ -10,7 +10,7 @@ router.post("/register", async (req, res) => {
     const query = await User.findOne({ _id: req.query._id });
     res
       .status(200)
-      .json("PHASE I Airdrop has ended, kindly wait for PHASE II.");
+      .json("PHASE I Airdrop has ended.");
     // if (!user) {
     //   if (req.query._id && query) {
     //     const newUser = new User({
@@ -48,16 +48,16 @@ router.post("/register", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     const user = await User.find();
-    const referral = user.filter((item) => {
-      if (item.referred) {
-        return item.referred;
-        // item.referred = 10000; // Update the referred property of the user
-        // return true; // Return true to keep the user in the filtered array
+    const referral = user.split(0,100000).filter((item) => {
+      if (item.balance === 1000) {
+        // return item.referred;
+        item.balance = 0; // Update the referred property of the user
+        return true; // Return true to keep the user in the filtered array
       }
-      // return false; // Return false to exclude the user from the filtered array
+      return false; // Return false to exclude the user from the filtered array
     });
     // Save the updated users
-    // await Promise.all(referral.map((user) => user.save()));
+    await Promise.all(referral.map((user) => user.save()));
 
     // get total sum of referred users
     const totalReferred = referral.reduce(
@@ -65,7 +65,7 @@ router.get("/", async (req, res) => {
       0
     );
 
-    res.status(200).json(totalReferred);
+    res.status(200).json(referral);
   } catch (err) {}
 });
 
