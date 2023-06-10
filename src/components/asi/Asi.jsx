@@ -1,8 +1,35 @@
 import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 import "./asi.scss";
 import { Slide, Zoom } from "react-awesome-reveal";
+import { useState } from "react";
+import Roadmap from "../roadmaps/Roadmap";
 
 const Asi = () => {
+  const [copy, setCopy] = useState(false);
+
+  const handleCopyText = () => {
+    const textToCopy = "0xef51585d985bad6818c8ad7ba6d70ccf6d216c89";
+
+    // Create a hidden input element
+    const input = document.createElement("input");
+    input.style.position = "fixed";
+    input.style.opacity = 0;
+    input.value = textToCopy;
+    document.body.appendChild(input);
+
+    // Select the input content
+    input.select();
+    input.setSelectionRange(0, 99999);
+
+    // Execute the copy command
+    document.execCommand("copy");
+
+    // Cleanup: remove the input element
+    document.body.removeChild(input);
+
+    setCopy(true);
+  };
+
   return (
     <div className="asi">
       <section>
@@ -108,9 +135,7 @@ const Asi = () => {
       </section>
 
       <section>
-        <div className="tonenomics">
-          <h2>TOKENOMICS</h2>
-        </div>
+        <div className="tonenomics">{/* <h2>TOKENOMICS</h2> */}</div>
       </section>
 
       <section>
@@ -142,7 +167,23 @@ const Asi = () => {
           <a href="/airdrop">Click Here</a>
         </div>
       </section>
-      <hr />
+      {/* <hr /> */}
+
+      <section>
+        <div className="tonenomics">
+          <h2>CONTRACT ADDRESS</h2>
+          <p>
+            0xef51585d985bad6818c8ad7ba6d70ccf6d216c89{" "}
+            <span onClick={handleCopyText} className="material-icons">
+              {copy ? "check" : "content_copy"}
+            </span>
+          </p>
+          <h2>ROADMAP</h2>
+          <div className="roadmapCon">
+            <Roadmap />
+          </div>
+        </div>
+      </section>
 
       <section>
         <Zoom triggerOnce>
