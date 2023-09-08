@@ -211,7 +211,7 @@ router.get("/", async (req, res) => {
   } catch (err) {}
 });
 
-router.get("/user/:id", async (req, res) => {
+router.get("/:id/user", async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
 
