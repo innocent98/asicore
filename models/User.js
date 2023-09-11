@@ -8,6 +8,7 @@ const UserSchema = new mongoose.Schema(
     referredList: { type: Array },
     reward: { type: Number, default: 0 },
     telegram: { type: String },
+    telegram_channel: { type: String },
     twitter: { type: String },
     link: { type: String },
   },

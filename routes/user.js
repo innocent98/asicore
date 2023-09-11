@@ -24,6 +24,7 @@ router.post("/register", async (req, res) => {
         const newUser = new User({
           address: req.body.address,
           telegram: req.body.telegram,
+          telegram_channel: req.body.telegram_channel,
           twitter: req.body.twitter,
           link: req.body.link,
           balance: 100,
@@ -38,6 +39,7 @@ router.post("/register", async (req, res) => {
         const newUser = new User({
           address: req.body.address,
           telegram: req.body.telegram,
+          telegram_channel: req.body.telegram_channel,
           twitter: req.body.twitter,
           link: req.body.link,
           balance: 100,
