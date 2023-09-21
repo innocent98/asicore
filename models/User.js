@@ -11,6 +11,7 @@ const UserSchema = new mongoose.Schema(
     telegram_channel: { type: String },
     twitter: { type: String },
     link: { type: String },
+    youtube: {type: String}
   },
   { timestamps: true }
 );

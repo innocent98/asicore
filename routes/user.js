@@ -1,12 +1,7 @@
 const router = require("express").Router();
 const User = require("../models/User");
 const Withdraw = require("../models/Withdraw");
-const Twit = require("twit");
 const dotenv = require("dotenv");
-const axios = require("axios");
-const OAuth = require("oauth-1.0a");
-const { TwitterApi } = require("twitter-api-v2");
-// const TwitterApi = "twitter-api-v2";
 
 dotenv.config();
 
@@ -23,33 +18,88 @@ router.post("/register", async (req, res) => {
       if (req.query._id && query) {
         const newUser = new User({
           address: req.body.address,
-          telegram: req.body.telegram,
-          telegram_channel: req.body.telegram_channel,
-          twitter: req.body.twitter,
-          link: req.body.link,
-          balance: 100,
         });
         await newUser.save();
+
         if (!query.referredList.includes(newUser.id)) {
           await query.updateOne({ $inc: { reward: query.referred + 10 } });
           await query.updateOne({ $push: { referredList: newUser.id } });
         }
+
         res.status(200).json(newUser);
       } else {
         const newUser = new User({
           address: req.body.address,
-          telegram: req.body.telegram,
-          telegram_channel: req.body.telegram_channel,
-          twitter: req.body.twitter,
-          link: req.body.link,
-          balance: 100,
         });
+
         await newUser.save();
         res.status(200).json(newUser);
       }
     } else {
       res.status(200).json(user);
     }
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.post("/airdrop/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const query = await User.findOne({ _id: req.query._id });
+    // res
+    //   .status(200)
+    //   .json("PHASE I Airdrop has ended.");
+
+    if (user) {
+      await User.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+      );
+
+      await user.updateOne({ $inc: { balance: +100 } });
+
+      res.status(201).json(user);
+    } else {
+      res
+        .status(201)
+        .json(
+          "You have already participated in this airdrop, kindly login to see your earnings."
+        );
+    }
+
+    // if (!user) {
+    //   if (req.query._id && query) {
+    //     const newUser = new User({
+    //       address: req.body.address,
+    //       telegram: req.body.telegram,
+    //       telegram_channel: req.body.telegram_channel,
+    //       twitter: req.body.twitter,
+    //       link: req.body.link,
+    //       balance: 100,
+    //     });
+    //     await newUser.save();
+    //     if (!query.referredList.includes(newUser.id)) {
+    //       await query.updateOne({ $inc: { reward: query.referred + 10 } });
+    //       await query.updateOne({ $push: { referredList: newUser.id } });
+    //     }
+    //     res.status(200).json(newUser);
+    //   } else {
+    //     const newUser = new User({
+    //       address: req.body.address,
+    //       telegram: req.body.telegram,
+    //       telegram_channel: req.body.telegram_channel,
+    //       twitter: req.body.twitter,
+    //       link: req.body.link,
+    //       balance: 100,
+    //     });
+    //     await newUser.save();
+    //     res.status(200).json(newUser);
+    //   }
+    // } else {
+    //   res.status(200).json(user);
+    // }
   } catch (err) {
     console.log(err);
   }
@@ -204,10 +254,6 @@ router.get("/", async (req, res) => {
     await Promise.all(referral.map((user) => user.save()));
 
     // get total sum of referred users
-    const totalReferred = referral.reduce(
-      (sum, user) => sum + user.referred,
-      0
-    );
 
     res.status(200).json(referral);
   } catch (err) {}
@@ -236,7 +282,7 @@ router.post("/login", async (req, res) => {
     } else {
       res
         .status(404)
-        .json("Account not found! Please participate in the airdrop first.");
+        .json("Please participate in the airdrop to see your earnings.");
     }
   } catch (err) {
     res.status(500).json("Internal server error");
