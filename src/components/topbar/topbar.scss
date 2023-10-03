@@ -17,7 +17,7 @@
     display: flex;
     align-items: center;
     p {
-      font-family: $genos;
+      font-family: $gold;
       font-size: 24px;
       font-weight: 600;
       @include tab {
@@ -36,8 +36,8 @@
       li {
         list-style: none;
         margin-left: 40px;
-        font-family: $poppins;
-        font-size: 15px;
+        font-family: $gold;
+        font-size: 18px;
         font-weight: 500;
         cursor: pointer;
       }

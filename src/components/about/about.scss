@@ -3,35 +3,55 @@
 .about {
   background-color: $black;
   padding: 0 40px;
+  background-image: url('../../../public/images/bg2.png');
+  @include tab{
+    padding: 0 20px;
+  }
 
   .wrapper {
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    padding: 50px 0;
-    margin-bottom: 100px;
+    margin-top: 40px;
+
     h2 {
-      font-family: $poppins;
+      font-family: $gold;
       font-weight: 700;
       font-size: 36px;
       margin-bottom: 30px;
       color: $primary;
+      text-align: left;
       @include tab{
         font-size: 22px;
       }
     }
 
     p {
-      width: 80%;
-      font-family: $poppins;
-      font-size: 18px;
+      // width: 80%;
+      font-family: $gold;
+      font-size: 22px;
       font-weight: 400;
       text-align: justify;
       @include tab{
         width: 100%;
-        font-size: 12px;
+        font-size: 18px;
+      }
+    }
+
+    .button{
+      background-color: $button;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: $poppins;
+      color: white;
+      font-weight: 700;
+      font-size: 16px;
+      margin-top: 20px;
+      @include tab{
+        font-size: 14px;
       }
     }
   }
@@ -42,7 +62,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    // margin: 70px 0;
+    margin-top: 70px;
+
     h2 {
       color: $primary;
       font-size: 36px;
@@ -56,13 +77,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      padding: 20px 0;
+      gap: 0px;
+      margin-top: 20px;
       img {
         width: 50%;
         cursor: pointer;
         @include tab{
-          width: 15%;
+          width: 30%;
         }
       }
     }

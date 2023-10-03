@@ -3,6 +3,11 @@
 .contact {
   background-color: $black;
   padding: 0 40px;
+  background-image: url('../../../public/images/bg2.png');
+  height: 100vh;
+  @include tab {
+    padding: 0px 20px;
+  }
 
   .wrapper {
     color: white;
@@ -42,6 +47,11 @@
         color: white;
         text-decoration: none;
         font-family: $poppins;
+        font-weight: 700;
+        font-size: 18px;
+        @include tab {
+          font-size: 16px;
+        }
       }
     }
     hr {
@@ -74,13 +84,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 0px;
       padding: 20px 0;
       img {
         width: 50%;
         cursor: pointer;
         @include tab {
-          width: 15%;
+          width: 30%;
         }
       }
     }

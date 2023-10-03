@@ -55,12 +55,14 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
     <div className="topbar">
       <div className="left">
         <img src="images/asi.jpg" alt="" style={{ width: "80px" }} />
-        <p>ASI CORE</p>
+        <p>ASI</p>
       </div>
       <div className="right">
         <ul>
           <li className={home ? "active" : ""} onClick={handleHome}>
-            Home
+            <a href="/" style={{ color: "white", textDecoration: "none" }}>
+              Home
+            </a>
           </li>
           <li>
             <a
@@ -74,10 +76,17 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
             </a>
           </li>
           <li className={about ? "active" : ""} onClick={handleAbout}>
-            About
+            <a href="/about" style={{ color: "white", textDecoration: "none" }}>
+              About
+            </a>
           </li>
           <li className={contact ? "active" : ""} onClick={handleContact}>
-            Contact
+            <a
+              href="/contact"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Contact
+            </a>
           </li>
           <li className={contact ? "active" : ""}>
             <a href="/login" style={{ color: "white" }}>
@@ -96,7 +105,9 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
             close
           </span>
           <li className={home ? "active" : ""} onClick={handleHome}>
-            Home
+            <a href="/" style={{ color: "white", textDecoration: "none" }}>
+              Home
+            </a>
           </li>
           <li>
             <a
@@ -110,10 +121,17 @@ const Topbar = ({ home, setHome, contact, setContact, about, setAbout }) => {
             </a>
           </li>
           <li className={about ? "active" : ""} onClick={handleAbout}>
-            About
+            <a href="/about" style={{ color: "white", textDecoration: "none" }}>
+              About
+            </a>
           </li>
           <li className={contact ? "active" : ""} onClick={handleContact}>
-            Contact
+            <a
+              href="/contact"
+              style={{ color: "white", textDecoration: "none" }}
+            >
+              Contact
+            </a>
           </li>
           <li className={contact ? "active" : ""}>
             <a href="/login" style={{ color: "white" }}>

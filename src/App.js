@@ -18,6 +18,8 @@ import Admin3 from "./pages/admin/Admin3";
 import Admin2 from "./pages/admin/Admin2";
 import Admin1 from "./pages/admin/Admin1";
 import Admin10 from "./pages/admin/Admin10";
+import About from "./components/about/About";
+import Contact from "./components/contact/Contact";
 const Airdrop = lazy(() => import("./pages/airdrop/Airdrop"));
 const Login = lazy(() => import("./pages/airdrop/Login"));
 const Home = lazy(() => import("./pages/home/Home"));
@@ -31,6 +33,22 @@ function App() {
       element: (
         <Suspense fallback={<div></div>}>
           <Home />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/about",
+      element: (
+        <Suspense fallback={<div></div>}>
+          <About />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/contact",
+      element: (
+        <Suspense fallback={<div></div>}>
+          <Contact />
         </Suspense>
       ),
     },

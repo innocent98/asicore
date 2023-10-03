@@ -1,8 +1,6 @@
-import { MeshDistortMaterial, OrbitControls, Sphere } from "@react-three/drei";
 import "./asi.scss";
 import { Slide, Zoom } from "react-awesome-reveal";
 import { useState } from "react";
-import Roadmap from "../roadmaps/Roadmap";
 
 const Asi = () => {
   const [copy, setCopy] = useState(false);
@@ -28,159 +26,155 @@ const Asi = () => {
     document.body.removeChild(input);
 
     setCopy(true);
+
+    setTimeout(() => {
+      setCopy(false);
+    }, 2000);
   };
 
   return (
     <div className="asi">
-      <section>
+      <section className="first_section">
+        <div className="net">
+          <img src="/images/net.png" alt="" />
+        </div>
+
         <div className="wrapper">
-          <div className="right">
-            <img src="images/4.png" alt="" />
-          </div>
-          <Slide direction="right" triggerOnce className="left">
-            <div className="left">
-              <h2>What is ASI CORE?</h2>
+          <Slide direction="right" triggerOnce className="slide">
+            <h2>$ASI STAKING</h2>
+
+            <div className="box">
+              <div className="flex">
+                <img src="/images/star.png" alt="" />
+                <h2>Flexible Staking</h2>
+              </div>
+
+              <p>ASI Tokens can be staked and withdraw flexibly</p>
+
+              <div className="flex">
+                <img src="/images/star.png" alt="" />
+                <h2>Boosting Power</h2>
+              </div>
+
               <p>
-                ASI CORE, which stands for Super Artificial Intelligence Core,
-                is a groundbreaking new meme token that is set to revolutionize
-                the world of cryptocurrency. At its Core is the power of super
-                artificial intelligence, which is harnessed to create a unique
-                and innovative investment opportunity for the cryptocurrency
-                market.
+                When ASI is staked, stake can get boosting power to boost your
+                favorite projects
               </p>
-              <button>Read More</button>
             </div>
           </Slide>
         </div>
       </section>
 
-      <section>
-        <div className="what">
-          <Slide direction="down" triggerOnce>
-            <div className="left">WHAT IS</div>
-          </Slide>
-          <Zoom tiggerOnce>
-            <div className="middle">
-              <h2>ASI CORE?</h2>
-              <img src="images/youtube.png" alt="" />
-            </div>
-          </Zoom>
-          <Slide direction="up" triggerOnce>
-            <div className="right">
-              <img src="images/logo-tp.png" alt="" />
-            </div>
-          </Slide>
+      <section className="second_section">
+        <div className="net">
+          <img src="/images/net.png" alt="" />
         </div>
-      </section>
 
-      <section>
         <div className="wrapper">
-          <Slide direction="left" triggerOnce className="left">
-            <div className="left">
-              <h2>Why ASI CORE?</h2>
-              <p>
-                With ASI CORE, investors have the opportunity to tap into the
-                power of super artificial intelligence and leverage its
-                capabilities to make better investment decisions. The token is
-                designed to be powered by a sophisticated AI system that uses
-                advanced algorithms and machine learning to analyze market
-                trends and predict future price movements.
-              </p>
-              <button>Read More</button>
+          <Slide direction="right" triggerOnce className="slide">
+            <div className="main_box">
+              <h2>ASI TOKENOMICS </h2>
+
+              <div className="flex">
+                <div className="box">
+                  <div className="p_wrap">
+                    <h2>CORE</h2>
+                    <p>BLOCKCHAIN: CORE</p>
+                    <p>TOTAL SUPPLY: 600,000,000,000</p>
+                    <p>TAX: BUY 0%, SELL 8% tax applied to each transaction </p>
+                    <p>SYMBOL: ASI</p>
+                    <p>DECIMAL: 18</p>
+                    <p>DEX: ICECREAMSWAP</p>
+                  </div>
+
+                  <div className="bottom">
+                    <span>
+                      <div className="circle"></div>
+                      <p>$ASICORE ADDRESS</p>
+                    </span>
+
+                    <div>
+                      <div className="token">
+                        0xef51585d985bad6818c8ad7ba6d70ccf6d216c89
+                      </div>
+                      <span
+                        class="material-symbols-outlined"
+                        style={{
+                          color: "white",
+                          overflow: "hidden",
+                          cursor: "pointer",
+                        }}
+                        onClick={handleCopyText}
+                      >
+                        {copy ? "done" : "content_copy"}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="box">
+                  <div className="p_wrap">
+                    <h2>BINANCE</h2>
+                    <p>BLOCKCHAIN: BINANCE</p>
+                    <p>TOTAL SUPPLY: 1,000,000,000</p>
+                    <p>TAX: BUY 0%, SELL 8% tax applied to each transaction </p>
+                    <p>SYMBOL: ASI</p>
+                    <p>DECIMAL: 18</p>
+                    <p>DEX: PANCAKESWAP</p>
+                  </div>
+
+                  <div className="bottom">
+                    <span>
+                      <div className="circle"></div>
+                      <p>$ASI BINANCE ADDRESS</p>
+                    </span>
+                    <div>
+                      <div className="token">.</div>
+                      <span
+                        class="material-symbols-outlined"
+                        style={{
+                          color: "white",
+                          overflow: "hidden",
+                          cursor: "pointer",
+                        }}
+                      >
+                        content_copy
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </Slide>
-          <div className="right">
-            <img src="images/5.png" alt="" />
-          </div>
         </div>
       </section>
 
-      <section>
-        <Slide direction="up" triggerOnce>
-          <div className="mission">
-            <h2>MISSION</h2>
-            <p>
-              ASI CORE is a Super Artificial Intelligence Core that aims to
-              provide next-generation artificial intelligence solutions for
-              businesses and individuals. One of the unique features of the ASI
-              CORE token is its use in the project's NFT marketplace. The ASI
-              CORE token is also used to power the project's decentralized
-              exchange (DEX), which allows users to swap the token with other
-              cryptocurrencies and tokens.
-            </p>
-          </div>
-        </Slide>
-      </section>
-
-      <section>
-        <div className="wrapper">
-          <div className="right">
-            <img src="images/3.png" alt="" />
-          </div>
-          <Slide direction="right" triggerOnce className="left">
-            <div className="left">
-              <h2>OUR TEAM</h2>
-              <p>
-                The team behind ASI CORE is made up of experienced and
-                knowledgeable professionals who are passionate about blockchain
-                technology and its potential to transform the world of finance.
-                The team is led by a group of experts with a deep understanding
-                of the cryptocurrency market and years of experience in
-                developing blockchain-based products and services.
-              </p>
-              <button>Read More</button>
-            </div>
-          </Slide>
+      <section className="third_section">
+        <div className="net">
+          <img src="/images/net.png" alt="" />
         </div>
-      </section>
 
-      <section>
-        <div className="tonenomics">{/* <h2>TOKENOMICS</h2> */}</div>
-      </section>
-
-      <section>
-        <div className="token">
-          <Zoom triggerOnce>
-            <h2>TOKEN INFORMATION</h2>
-            {/* <div className="address">
-              <h4>CONTACT ADDRESS</h4>
-              <p>0x7ui87uyt689u99hfu978997gew2dg7fxnm,,,,nbnb</p>
-            </div> */}
-            <div className="addressInfo">
-              <h4>
-                CHAIN: <span>CORE CHAIN</span>
-              </h4>
-              <h4>
-                NAME: <span>ARTIFICIAL SUPER INTELIGENCE</span>
-              </h4>
-              <h4>
-                Symbol: <span>ASICORE</span>
-              </h4>
-              <h4>
-                Decimal: <span>18</span>
-              </h4>
-            </div>
-          </Zoom>
-        </div>
-        <div className="participate">
-          <h4>Participate in Airdrop</h4>
-          <a href="/airdrop">Click Here</a>
-        </div>
-      </section>
-      {/* <hr /> */}
-
-      <section>
         <div className="tonenomics">
-          <h2>CONTRACT ADDRESS</h2>
-          <p>
-            0xef51585d985bad6818c8ad7ba6d70ccf6d216c89{" "}
-            <span onClick={handleCopyText} className="material-icons">
-              {copy ? "check" : "content_copy"}
-            </span>
-          </p>
           <h2>ROADMAP</h2>
           <div className="roadmapCon">
-            <Roadmap />
+            <img src="/images/road-map.png" alt="" />
+          </div>
+        </div>
+      </section>
+
+      <section className="fourth_section">
+        <div className="net">
+          <img src="/images/net.png" alt="" />
+        </div>
+
+        <div className="wrapper">
+          <div className="box">
+            <img src="/images/asi.png" alt="" />
+
+            <p>
+              ASI let you experience the power of{" "}
+              <span>Artificial Super Intelligence </span>
+            </p>
           </div>
         </div>
       </section>
@@ -188,13 +182,17 @@ const Asi = () => {
       <section>
         <Zoom triggerOnce>
           <div className="inTouch">
-            <h2>GET IN TOUCH</h2>
             <div className="img">
               <a href="https://twitter.com/asi_core">
                 <img src="images/tw.png" alt="" />
               </a>
+
               <a href="https://t.me/asi_core">
                 <img src="images/tg.png" alt="" />
+              </a>
+
+              <a href="/">
+                <img src="images/you.png" alt="" />
               </a>
             </div>
             <hr />
