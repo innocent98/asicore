@@ -25,14 +25,14 @@ const Contact = () => {
           <div className="inTouch">
             {/* <h2>GET IN TOUCH</h2> */}
             <div className="img">
-              <a href="https://twitter.com/asi_core">
+              <a href="https://twitter.com/asi_core" target="_blanc">
                 <img src="images/tw.png" alt="" />
               </a>
-              <a href="https://t.me/asi_core">
+              <a href="https://t.me/asi_core" target="_blanc">
                 <img src="images/tg.png" alt="" />
               </a>
 
-              <a href="/">
+              <a href="https://youtube.com/@asi_core?si=rVRUylvgnqZ3-XlU" target="_blanc">
                 <img src="images/you.png" alt="" />
               </a>
             </div>

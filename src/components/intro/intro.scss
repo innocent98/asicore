@@ -6,7 +6,7 @@
     height: 80vh;
   }
   .bkImg {
-    background-image: url("../../../public/images/bg1.png");
+    background-image: url("../../../public/images/bg5.png");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -53,15 +53,19 @@
 
       .img {
         width: 400px;
-        margin-top: 30px;
+        height: 380px;
+        overflow: hidden;
+        margin-top: 20px;
         position: relative;
 
         @include tab {
           width: 300px;
+          height: 280px;
         }
 
         @include mobile {
           width: 250px;
+          height: 230px;
         }
 
         .tree {
@@ -72,8 +76,8 @@
           position: absolute;
           width: 38%;
           z-index: 9;
-          // top: 0;
           bottom: 0;
+          // top: 0;
           left: 30.4%;
           right: 0;
         }
